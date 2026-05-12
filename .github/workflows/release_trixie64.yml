@@ -18,14 +18,14 @@ jobs:
       repo: bitwalk123/woof-CE
       ref: testing
       runner: ubuntu-24.04
-      name: 'TrixiePup64Wayland'
+      name: 'TrixiePup64'
       version: '2606'
       arch: x86_64
       compat-distro: debian
       compat-distro-version: dpupt64wayland
       kernel: 'debian-trixie'
       prefix: dpupt64w
-      artifact: TrixiePup64Wayland-${{ github.run_number }}
+      artifact: TrixiePup64-${{ github.run_number }}
       retention: 1
 
   upload64:
@@ -38,20 +38,21 @@ jobs:
       - name: Download build artifact
         uses: actions/download-artifact@v8
         with:
-          name: TrixiePup64Wayland-${{ github.run_number }}
+          name: TrixiePup64-${{ github.run_number }}
           path: .
       - name: Generate SHA512 checksums
         run: |
-          mv dpupt64w-2606.iso TrixiePup64-Wayland-2606-${{ steps.version.outputs.builddate }}.iso
+          mv dpupt64w-2606.iso TrixiePup64-2606-${{ steps.version.outputs.builddate }}.iso
           find . -type f -name '*.sfs' -exec sha512sum {} \; > SHA512checksums.txt
           find . -type f -name '*.iso' -exec sha512sum {} \; >> SHA512checksums.txt
       - name: Create Release
         uses: softprops/action-gh-release@v3
         with:
-          name: TrixiePup64-Wayland-2606
-          tag_name: TrixiePup64-Wayland/release-${{ steps.version.outputs.builddate }}
+          name: TrixiePup64-2606
+          tag_name: TrixiePup64/release-${{ steps.version.outputs.builddate }}
           fail_on_unmatched_files: true
           files: |
             *.iso
             *.sfs
             SHA512checksums.txt
+          draft: true
