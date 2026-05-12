@@ -1,4 +1,4 @@
-name: dpupt64wayland
+name: trixiepupt64
 
 on:
   workflow_dispatch:
