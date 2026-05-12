@@ -13,9 +13,9 @@ on:
 
 jobs:
   x86_64:
-    uses: peabee/woof-CE/.github/workflows/build.yml@testing
+    uses: bitwalk123/woof-CE/.github/workflows/build.yml@testing
     with:
-      repo: peabee/woof-CE
+      repo: bitwalk123/woof-CE
       ref: testing
       runner: ubuntu-24.04
       name: 'TrixiePup64Wayland'
