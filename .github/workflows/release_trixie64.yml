@@ -55,4 +55,3 @@ jobs:
             *.iso
             *.sfs
             SHA512checksums.txt
-          draft: true
